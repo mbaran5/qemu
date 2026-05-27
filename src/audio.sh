@@ -41,6 +41,6 @@ websockify 127.0.0.1:5712 127.0.0.1:5711 &
 
 # Append QEMU audio device arguments
 ARGS+=" -audiodev pa,id=snd0,server=unix:/tmp/pulse/native"
-ARGS+=" -device ${AUDIO_DEVICE} ${AUDIO_DEVICE_EXTRA}"
+ARGS+=" -device ${AUDIO_DEVICE}${AUDIO_DEVICE_EXTRA}"
 
 return 0
