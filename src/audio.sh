@@ -2,7 +2,9 @@
 set -Eeuo pipefail
 
 # Docker environment variables
-: "${AUDIO:="N"}"    # Browser audio support (Y/N)
+: "${AUDIO:="N"}"              # Browser audio support (Y/N)
+: "${AUDIO_DEVICE:="intel-hda"}"          # QEMU audio device
+: "${AUDIO_DEVICE_EXTRA:="-device hda-duplex,audiodev=snd0"}"  # Extra audio device args
 
 [[ "${AUDIO,,}" != [Yy1]* ]] && return 0
 
@@ -39,6 +41,6 @@ websockify 127.0.0.1:5712 127.0.0.1:5711 &
 
 # Append QEMU audio device arguments
 ARGS+=" -audiodev pa,id=snd0,server=unix:/tmp/pulse/native"
-ARGS+=" -device intel-hda -device hda-duplex,audiodev=snd0"
+ARGS+=" -device ${AUDIO_DEVICE} ${AUDIO_DEVICE_EXTRA}"
 
 return 0
