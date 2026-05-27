@@ -1,0 +1,3 @@
+# Minimal PulseAudio config for QEMU audio capture
+load-module module-null-sink sink_name=qemu_output sink_properties=device.description=QEMU
+load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulse/native

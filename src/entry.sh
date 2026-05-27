@@ -21,6 +21,7 @@ cd /run
 . memory.sh     # Check available memory
 . balloon.sh    # Initialize ballooning
 . config.sh     # Configure arguments
+. audio.sh      # Initialize audio
 . finish.sh     # Finish initialization
 
 trap - ERR
