@@ -378,7 +378,7 @@ const AudioPlugin = {
                 throw new Error(`Unsupported codec ${codec}`);
         }
 
-        const wsSchema = (NVUI.getSetting('audio_encrypt')) ? 'wss://' : 'ws://';
+        const wsSchema = (NVUI.getSetting('audio_encrypt') === true) ? 'wss://' : 'ws://';
         const wsHost = NVUI.getSetting('audio_host') || window.location.hostname;
         const wsPort = NVUI.getSetting('audio_port') || window.location.port || '8006';
         const wsPath = NVUI.getSetting('audio_path') || 'audio';
